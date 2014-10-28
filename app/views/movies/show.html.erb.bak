@@ -1,0 +1,19 @@
+<h2 align="center"><%= @current_user.username%>'s Profile </h2> 
+<center>
+<table class ="boldtable" align="center" style="width:50%"  border="1" cellspacing="0" cellpadding="3" style="font-size: 8px">
+
+    <tr>
+    <td>User Name</td>
+    <td><%= @current_user.username%></td>   
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><%= @current_user.email%></td>    
+     </tr>
+     <td>Gender</td>
+    <td><%= @current_user.gender%></td>    
+     </tr>
+  
+</table> 
+<button class="css_button" ><%= link_to "Update", edit_user_path(@current_user)  %></button>
+     <button class="css_button" ><%= link_to "back", home_path %></button></center>

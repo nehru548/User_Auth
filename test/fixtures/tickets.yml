@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  movie_name: MyString
+  center_name: MyString
+  date: 2014-10-24
+  time: MyString
+  no_tickets: 1
+  price: 1
+  seat_number: MyString
+
+two:
+  username: MyString
+  movie_name: MyString
+  center_name: MyString
+  date: 2014-10-24
+  time: MyString
+  no_tickets: 1
+  price: 1
+  seat_number: MyString

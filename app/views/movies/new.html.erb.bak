@@ -1,0 +1,21 @@
+<% @page_title = "Add movie" %>
+<center>
+  <h2 align="center">Add movie</h2>
+  <% if @movie.errors.any? %>
+    <ul class="Signup_Errors">
+    <% for message_error in @user.errors.full_messages %>
+      <li>* <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <table >
+  <%= form_for(@movise) do |f| %>
+   <tr><td> <%= f.text_field :name,:class => "textox",:placeholder =>"Enter name "%> </td></tr>
+   
+    <tr><td><%= f.submit "Create movie",:class =>"css_button" %>
+    </td><tr>
+  </table>
+  <% end %>
+  <center>
+
+

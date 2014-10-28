@@ -1,0 +1,27 @@
+var centers = new Array();
+<% for center in @centers -%>
+  centers.push(new Array(<%= center.movie_id %>, '<%=h center.name %>', <%= center.id %>));
+<% end -%>
+
+function movieSelected() {
+  movie_id = $('#booking_movie_name').getValue();
+
+  options = $('#booking_center_name').options;
+  options.length = 1;
+  centers.each(function(center) {
+    if (center[0] == movie_id) {
+      options[options.length] = new Option(center[1], center[2]);
+    }
+  });
+  if (options.length == 1) {
+    $('#center_field').hide();
+  } else {
+    $('#center_field').show();
+  }
+}
+
+document.observe('#dom:loaded', function() {
+  countrySelected();
+  
+  $('#booking_movie_name').observe('change', movieSelected);
+});

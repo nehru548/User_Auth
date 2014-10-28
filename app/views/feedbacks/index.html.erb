@@ -1,0 +1,20 @@
+
+<h2>Feedback</h2>
+ <%= form_tag feedbacks_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search],:class => "textox" ,:size =>'10'%>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<%for @a in @movies%>
+	<% @name=@a.name %>
+	
+	<h3 align='center'>
+		<%=link_to @name,new_feedback_path(:name =>@name)%><br>
+		<%=link_to image_tag(@name.delete(' ')+'1.jpg') ,new_feedback_path(:name =>@name)%></h3>
+		<br><br>
+<%end%>
+<%unless @movies[0]%>
+<b>No result Found</b>
+<%end%>

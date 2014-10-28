@@ -1,0 +1,50 @@
+<% @page_title = "centerAuth | Signup" %>
+
+  <h2>Adding centers for movies</h2>
+  <% if @center.errors.any? %>
+    <ul class="Signup_Errors">
+    <% for message_error in @center.errors.full_messages %>
+      <li>* <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+    <table align="left">
+  <%= form_for(@center) do |f| %>
+   <tr><td> <%= f.text_field :movie_id,:class => "textox",:size=>"10",:placeholder =>"Enter movie Id "%> </td></tr>
+     <tr><td><%= f.text_field :name,:class => "textox",:size=>"12",:placeholder =>"Enter center name"%></td></tr>
+    
+    <tr><td><%= f.submit "Add Center",:class =>"css_button" %></td>
+     <tr><td><%=link_to "Want to add movies",new_movie_path%><td>
+    </td><tr>
+  </table>
+   
+
+  <%@all=Movie.all%>
+  <table align="center"border='1'>
+    <tr><th>Movie Id</th>
+      <th colspan="3">Movie Name </th>
+      <th>Movie Centers</th>
+
+  <%for @a in @all %>
+  <tr>
+  <td><%=@a.id%></td>
+  <td><%=@a.name%></td>
+  <td><%=link_to "✎",edit_movie_path(@a)%></td>
+  <td><%=link_to "✗ ",@a, method: :delete, data: { confirm: 'Are you sure？' } %></td>
+  <%@centers_name=Center.where(:movie_id => @a.id)%>
+  <td border="1">
+  <%for @b in @centers_name %>
+  <%=@b.name%>
+  <%=link_to "✎",edit_center_path(@b)%>
+  <%=link_to "✗ ",@b, method: :delete, data: { confirm: 'Are you sure？' }%>,
+  <%end%>
+  </td>
+</tr>
+  <%end%>
+  </table >
+
+
+
+ 
+  <% end %>
+

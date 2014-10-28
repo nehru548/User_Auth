@@ -1,0 +1,14 @@
+<h1>New Person</h1>
+
+<%= form_for @booking do |f| %>
+
+  <div class="field">
+    <%= f.label :movie_id %><br />
+    <%= f.collection_select :movie_id, Movie.order(:name), :id, :name, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :center_id, "center or Province" %><br />
+    <%= f.grouped_collection_select :center_id, Movie.order(:name), :centers, :name, :id, :name, include_blank: true %>
+  </div>
+  <div class="actions"><%= f.submit %></div>
+<% end %>

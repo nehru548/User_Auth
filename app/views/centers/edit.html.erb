@@ -1,0 +1,22 @@
+<% @page_title = "centerAuth | Signup" %>
+<center>
+  <h2 align="center">Adding centers for movies</h2>
+  <% if @center.errors.any? %>
+    <ul class="Signup_Errors">
+    <% for message_error in @center.errors.full_messages %>
+      <li>* <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+ 
+  
+  
+  <%= form_for(@center) do |f| %>
+   <tr><td> <%= f.text_field :movie_id,:class => "textox",:placeholder =>"Enter movie Id "%> </td></tr>
+     <tr><td><%= f.text_field :name,:class => "textox",:placeholder =>"Enter center name"%></td></tr>
+    
+    <tr><td><%= f.submit "edit",:class =>"css_button" %>
+    </td><tr>
+  </table>
+  <% end %>
+  </center>

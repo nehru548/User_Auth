@@ -1,0 +1,31 @@
+<%@films=Film.order(:name).all%>
+<h1>Film Details</h1><br/>
+<%= form_tag films_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search],:class => "textox",:size =>'10' %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+<%for @film in @films%>
+<center><%= image_tag @film.name.delete(' ')+'1.jpg' %></center>
+<p>
+  <b>Movie Name :</b>
+
+  <%= @film.name %>
+</p>
+
+<p>
+  <b>Director :</b>
+  <%= @film.director %>
+</p>
+<p>
+  <b>Actors :</b>
+  <%= @film.actors %>
+</p>
+
+<p>
+  <b>Description :</b>
+  <%= @film.description %>
+</p>
+<br><br><br><br>
+<%end%>

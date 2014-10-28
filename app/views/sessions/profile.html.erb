@@ -1,0 +1,18 @@
+<h2 align="center"><%= @current_user.username%>'s Profile </h2> 
+<table align="center" style="width:50%">
+  <tr>
+    <td>User Name</td>
+    <td><%= @current_user.username%></td>   
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><%= @current_user.email%></td>    
+     </tr>
+     <td>Gender</td>
+    <td><%= @current_user.gender%></td>    
+     </tr>
+     <tr>
+      <td><%= link_to "Update", edit_user_path(@current_user)  %><td>
+      </tr>
+</table><p>hvkx </p> 
+<%= link_to "Update", edit_user_path(@current_user)  %>

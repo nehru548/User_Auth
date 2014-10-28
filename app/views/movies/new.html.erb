@@ -1,0 +1,41 @@
+<% @page_title = "Add movie" %>
+
+  <h2>Add movie</h2>
+  <% if @movie.errors.any? %>
+    <ul class="Signup_Errors">
+    <% for message_error in @movie.errors.full_messages %>
+      <li>* <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <table align="left">
+  <%= form_for(@movie) do |f| %>
+   <tr><td> <%= f.text_field :name,:class => "textox",:size=>"15",:placeholder =>"Enter name "%> </td></tr>
+   
+    <tr><td><%= f.submit "Add Movie",:class =>"css_button" %>
+        <%=link_to "Want to add centers for movie",new_center_path%>
+    </td></tr>
+  
+  <% end %>
+  </table>
+ 
+  <%@all=Movie.all%>
+  <table border=1>
+    <tr><th>Movie Id</th>
+      <th colspan="3">Movie Name </th>
+   
+
+  <%for@a in @all %>
+  <tr>
+  <td><%=@a.id%></td>
+  <td><%=@a.name%></td>
+  <td><%=link_to "✎",edit_movie_path(@a)%></td>
+  <td><%=link_to "✗ ",@a, method: :delete, data: { confirm: 'Are you sure？' } %></td>
+  
+</tr>
+  <%end%>
+  </table >
+
+
+
+

@@ -1,0 +1,15 @@
+<h1>movie Trailers</h1>
+<%= form_tag trailers_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search],:class => "textox",:size =>'10' %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+<div align='center'>
+<%@trailers=Trailer.order(:name).all%>
+<%for @trailer in @trailers%>
+<b><%=@trailer.name%><b><br>
+
+<iframe width="350" height="200" src=<%=@trailer.link %> frameborder="0" allowfullscreen></iframe><br><br><br>
+<%end%>
+</div>

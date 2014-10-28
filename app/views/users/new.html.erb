@@ -1,0 +1,26 @@
+<% @page_title = "UserAuth | Signup" %>
+<center>
+  <h2 align="center">Sign Up</h2>
+  <% if @user.errors.any? %>
+    <ul class="Signup_Errors">
+    <% for message_error in @user.errors.full_messages %>
+      <li> <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <table >
+  <%= form_for(@user) do |f| %>
+   <tr><td> <%= f.text_field :username,:class => "textox",:placeholder =>"User name "%> </td></tr>
+     <tr><td><%= f.text_field :email,:class => "textox",:placeholder =>" Email"%></td></tr>
+     <tr><td><%= f.password_field :password,:class => "textox",:placeholder =>"Password"%></td></tr>
+    <tr><td><%= f.password_field :password_confirmation,:class => "textox",:placeholder =>"password_confirmation"%></td></tr>
+    <tr><td> <label class="button"><%= f.radio_button :gender, "Female", :checked => (:gender == 'female')? true:false %><span class="outer"><span class="inner"></span></span>Female </label> 
+     <label class="button"><%=f.radio_button :gender, "Male", :checked => (:gender == 'male')? true:false %><span class="outer"><span class="inner"></span></span>Male </label> </td></tr>
+    <tr><td><%= f.submit "create",:class =>"css_button" %>
+    <%= link_to "Login" ,login_path,:class => "css_button" %></td><tr>
+  </table>
+  <% end %>
+  <center>
+
+
+<!-- :user, :url => {:controller => 'users', :action => 'create'} -->

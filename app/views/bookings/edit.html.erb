@@ -1,0 +1,127 @@
+<h1>Booking</h1>
+
+ <% if @booking.errors.any? %>
+    <ul class="Signup_Errors">
+    <% for message_error in @booking.errors.full_messages %>
+      <li> <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  
+
+<h2>
+<table align="center" border=1>
+<%= form_for(@booking) do |f| %>
+  
+
+  <div class="field">
+    <tr>
+    <td><%= f.label :movie_id,"Movie :" %></td>
+   <td><%= f.collection_select :movie_id, Movie.order(:name), :id, :name, {include_blank: "select movie"},{:class => "textox"}%></td>
+ </tr>
+  </div>
+  
+  <div class="field">
+    <tr>
+    <td><%= f.label :center_id, "Center : " %></td>
+    <td><%= f.grouped_collection_select(:center_id, Movie.order(:name), :centers, :name, :id, :name,{ include_blank: "select center"},{:class => "textox"}) %>
+    </tr>
+  </div>
+  
+  <div class="field">
+    <tr>
+    <td><%= f.label :Date,"Date :"%></td>
+     <td><%= f.date_field("date",min:Date.today+1, max: Date.today+5,include_blank: true,:class => "textox",:size=>"20") %></td>
+     </tr>
+  </div> 
+    <div class="field">
+      <tr>
+    <td><%= f.label :Time,"Time :"%></td>
+    <td><%= f.select( :time, options_for_select([ "10AM", "2PM","6PM","10PM" ]),{include_blank: "select time"},{:class => "textox"} )%></td>
+    </tr>
+  </div> 
+  <div class="field">
+    <tr>
+    <td><%= f.label :no_tickets,"Number of Tickets :"%></td>
+    <td ><%= f.number_field(:no_tickets,in: 1..200,:class => "textox",:size=>"20") %><div id="a"></div></td>
+  </tr>
+  </div> 
+  
+<td></td>
+  <td><div class="actions"><%= f.submit "Book",:class => "css_button"%></div></td>
+</tr>
+  
+<% end %>
+</table></table>
+</h2>
+
+
+
+<script type="text/javascript" >
+
+$(document).ready(function() {
+ 
+  centers = $('#booking_center_id').html();
+  
+    options = $(centers).filter("optgroup[label='" + $("#booking_movie_id").find(':selected').html() + "']").html();
+
+
+    if (options){
+      $('#booking_center_id').html(options);
+      $('#booking_center_id').parent().show();
+    }
+    else{
+      $('#booking_center_id').empty();
+      $('#booking_center_id').parent().hide();
+    }
+
+  $('#booking_movie_id').change(function(){
+ 
+    options = $(centers).filter("optgroup[label='" + $(this).find(':selected').html() + "']").html();
+
+
+    if (options){
+      $('#booking_center_id').html(options);
+      $('#booking_center_id').parent().show();
+      $('#booking_date').parent().show();
+    }
+    else{
+      $('#booking_center_id').empty();
+      $('#booking_center_id').parent().hide();
+    }
+    });
+
+
+      $('#booking_center_id').change(function() {
+
+        $('#booking_date').parent().show();
+      
+     });
+
+      $('#booking_date').change(function() {
+
+      
+          $('#booking_time').parent().show();
+   
+      });
+
+
+      $('#booking_time').change(function() {
+      
+    
+    $('#booking_no_tickets').parent().show();
+    $('#a').show();
+
+    });
+   
+    
+    $('#booking_no_tickets').change(function() {
+     
+      var a=document.getElementById("booking_no_tickets").value
+      $("#a").text("$"+a*12)
+
+    });
+    
+
+});
+    </script>

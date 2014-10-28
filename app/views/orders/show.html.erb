@@ -1,0 +1,28 @@
+
+<h1>Ticket booked successfully</h1>
+<%@current_ticket=Ticket.find(session[:ticket_id])%>
+<table border="1">
+<tr><th>Movie name</th>
+	<th>Center name</th>
+	<th>Date</th>
+	<th>Time</th>
+	<th>Number of Tickets</th>
+	<th>Price</th>
+	<th>Seat Number</th>
+
+</tr>
+<tr>
+	<td><%=@current_ticket.movie_name%></td>
+	<td><%=@current_ticket.center_name%></td>
+	<td><%=@current_ticket.date %></td>
+	<td><%=@current_ticket.time %></td>
+	<td><%=@current_ticket.no_tickets %></td>
+	<td>$<%=@current_ticket.price %></td>
+	<td><%=@current_ticket.seat_number %></td>
+	
+	
+	
+</tr>
+</table>
+
+

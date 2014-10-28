@@ -1,0 +1,15 @@
+<h1>Film News</h1>
+ <%= form_tag new_news_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search],:class => "textox" ,:size =>'10'%>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+<div >
+
+<%for @new in @news%>
+<b><%=link_to @new.name,news_path(@new)%></b><br>
+
+<br><br>
+<%end%>
+</div>

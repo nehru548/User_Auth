@@ -1,0 +1,22 @@
+<% @page_title = "Edit movie" %>
+<center>
+  <h2 align="center">Editmovie</h2>
+  <% if @movie.errors.any? %>
+    <ul class="Signup_Errors">
+    <% for message_error in @movie.errors.full_messages %>
+      <li>* <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+ 
+  <table >
+  <%= form_for(@movie) do |f| %>
+   <tr><td> <%= f.text_field :name,:class => "textox",:placeholder =>"Enter name "%> </td></tr>
+   
+    <tr><td><%= f.submit "Edit Movie",:class =>"css_button" %>
+    </td><tr>
+  </table>
+  <% end %>
+  <center>
+
+

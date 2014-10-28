@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  movie_id: 1
+  center_id: 1
+  date: 2014-10-11
+  time: MyString
+  no_tickets: 1
+
+two:
+  movie_id: 1
+  center_id: 1
+  date: 2014-10-11
+  time: MyString
+  no_tickets: 1

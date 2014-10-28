@@ -1,0 +1,32 @@
+<h1>show booking</h1>
+<%@current_user = User.find(session[:user_id])%>
+<%session[:movie_id]=@current_booking.movie_id%>
+<%@current_movie= Movie.find(session[:movie_id])%>
+
+<%session[:center_id]=@current_booking.center_id%>
+<%@current_center= Center.find(session[:center_id])%>
+<table border="1">
+<tr><th>Movie name</th>
+	<th>Center name</th>
+	<th>Date</th>
+	<th>Time</th>
+	<th>Number of Tickets</th>
+	<th>Price</th>
+	
+
+</tr>
+<tr>
+	<td><%=@current_movie.name%></td>
+	<td><%=@current_center.name%></td>
+	<td><%=@current_booking.date %></td>
+	<td><%=@current_booking.time %></td>
+	<td><%=@current_booking.no_tickets %></td>
+	<td>$<%=@current_booking.no_tickets*12 %></td>
+	
+	
+	
+</tr>
+</table>
+</br>
+<%= link_to "confirm" , new_order_path %>
+<%= link_to "Edit" , edit_booking_path(@current_booking) %>
